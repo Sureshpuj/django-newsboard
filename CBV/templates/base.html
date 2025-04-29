@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI News Portal{% endblock title %}</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom AI Color Theme -->
+    <style>
+        .btn-ai {
+            background-color: #00ffff;
+            color: #000;
+            border: none;
+        }
+        .btn-ai:hover {
+            background-color: #00cccc;
+            color: #000;
+        }
+        
+        body {
+            background-color: #0f172a; /* dark slate */
+            color: #e0f2fe; /* light cyan text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar, .footer {
+            background-color: #1e293b; /* deep gray-blue */
+        }
+
+        .navbar a, .footer a {
+            color: #a5f3fc !important; /* neon cyan */
+        }
+
+        .btn-ai {
+            background-color: #6366f1; /* indigo-500 */
+            color: #fff;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-ai:hover {
+            background-color: #4f46e5;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    {% include "includes/navbar.html" %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    {% include "includes/footer.html" %}
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the home page</p>
+
+    <p id="datetime"></p>  <!-- Placeholder for the date and time -->
+
+    <script>
+        // Function to format and display the current date and time
+        function updateDateTime() {
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleString('en-US', {
+                weekday: 'long', // e.g., "Monday"
+                year: 'numeric', // e.g., "2025"
+                month: 'long', // e.g., "April"
+                day: 'numeric', // e.g., "29"
+                hour: '2-digit', // e.g., "11"
+                minute: '2-digit', // e.g., "30"
+                second: '2-digit' // e.g., "45"
+            });
+            document.getElementById('datetime').innerText = "Current Date and Time: " + formattedDate;
+        }
+
+        // Call the function to update the date and time when the page loads
+        updateDateTime();
+
+        // Optionally, update the time every second
+        setInterval(updateDateTime, 1000);
+    </script>
+{% endblock %}

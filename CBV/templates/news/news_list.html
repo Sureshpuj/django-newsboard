@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4 text-info">📰 All News</h1>
+
+    {% if news_list %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for item in news_list %}
+                <div class="col">
+                    <div class="card h-100 bg-dark text-light border-info">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.content|truncatewords:30 }}</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top border-info d-flex justify-content-between align-items-center">
+                            <div>
+                                <a href="{% url 'news_detail' item.pk %}" class="btn btn-outline-info btn-sm">View</a>
+                                <a href="{% url 'news_update' item.pk %}" class="btn btn-outline-warning btn-sm">Update</a>
+                            </div>
+                            {% if item.author == request.user %}
+                                <form action="{% url 'news_delete' item.pk %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted">No news available. Be the first to post!</p>
+    {% endif %}
+</div>
+{% endblock %}
